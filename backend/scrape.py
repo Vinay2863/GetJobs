@@ -1,11 +1,24 @@
 import time  
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service  
+from selenium.webdriver.chrome.options import Options
 
-path = "C:/Users/preet/MajorProject/Project_Major/public/chromedriver.exe"
-service = Service(path)
-driver = webdriver.Chrome(service=service)
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Run in headless mode
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+
+# Connect to Selenium container
+SELENIUM_REMOTE_URL = "http://selenium:4444/wd/hub"
+
+driver = webdriver.Remote(
+    command_executor=SELENIUM_REMOTE_URL,
+    options=chrome_options
+)
+
+
+# path = "C:/Users/preet/MajorProject/Project_Major/public/chromedriver.exe"
+# service = Service(path)
+# driver = webdriver.Chrome(service=service)
 
 def microsoft(skills):  
     driver.get('https://jobs.careers.microsoft.com/global/en/search')

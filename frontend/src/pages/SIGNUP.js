@@ -111,7 +111,7 @@
 //     }
 
 //     try {
-//       const response = await axios.post('http://127.0.0.1:5000/signup', formData);
+//       const response = await axios.post('http://127.0.0.1:5005/signup', formData);
 //       alert(response.data.message);
 //       navigate('/login');
 //     } catch (error) {
@@ -276,7 +276,7 @@ const SIGNUP = () => {
     }
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/signup', formData);
+      const response = await axios.post('http://127.0.0.1:5005/signup', formData);
       alert(response.data.message);
       navigate('/login');
     } catch (error) {

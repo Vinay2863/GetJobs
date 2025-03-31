@@ -34,7 +34,7 @@
 //     try {
 //       console.log(formData);
 //       Loginuser(formData);
-//       const response = await axios.post('http://127.0.0.1:5000/login', formData);
+//       const response = await axios.post('http://127.0.0.1:5005/login', formData);
 //       console.log('Login Success:', response.data);
 //       navigate('/profile');
 //     } catch (error) {
@@ -169,7 +169,7 @@ const LOGIN = () => {
       // formData.password = encryptedPassword;
       // console.log(encryptedPassword);
       Loginuser(formData);
-      const response = await axios.post('http://127.0.0.1:5000/login', formData);
+      const response = await axios.post('http://127.0.0.1:5005/login', formData);
       console.log('Login Success:', response.data);
 
       localStorage.setItem("LoggedInUser", JSON.stringify({ 

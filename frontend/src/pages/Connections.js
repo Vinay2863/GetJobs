@@ -13,7 +13,7 @@ const Connections = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:5000/usersrec', {
+        const response = await axios.post('http://127.0.0.1:5005/usersrec', {
           params: { email: currentuser.email }
         });
         const formattedData = response.data.map(profile => ({

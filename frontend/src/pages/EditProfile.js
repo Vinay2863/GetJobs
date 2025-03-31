@@ -21,7 +21,7 @@
 //         // Fetch user profile data when component mounts
 //         const fetchProfile = async () => {
 //             try {
-//                 const response = await axios.get('http://127.0.0.1:5000/profile', {
+//                 const response = await axios.get('http://127.0.0.1:5005/profile', {
 //                     params: { email: currentuser.email }
 //                 });
 //                 const profileData = response.data;
@@ -93,7 +93,7 @@
 //                 return obj;
 //             }, {});
 //             console.log(filteredData);
-//             const response = await axios.post('http://127.0.0.1:5000/editprofile', {
+//             const response = await axios.post('http://127.0.0.1:5005/editprofile', {
 //                 email: currentuser.email,
 //                 data: filteredData
 //             });
@@ -248,7 +248,7 @@ const EditProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/profile', {
+                const response = await axios.get('http://127.0.0.1:5005/profile', {
                     params: { email: currentuser.email }
                 });
                 const profileData = response.data;
@@ -324,7 +324,7 @@ const EditProfile = () => {
     //                 return obj;
     //             }, {});
 
-    //         await axios.post('http://127.0.0.1:5000/editprofile', {
+    //         await axios.post('http://127.0.0.1:5005/editprofile', {
     //             email: currentuser.email,
     //             data: filteredData
     //         });
@@ -350,7 +350,7 @@ const EditProfile = () => {
     
             console.log("Filtered Data:", filteredData); // Debugging
     
-            const response = await axios.post('http://127.0.0.1:5000/editprofile', {
+            const response = await axios.post('http://127.0.0.1:5005/editprofile', {
                 email: currentuser.email,
                 data: filteredData
             });

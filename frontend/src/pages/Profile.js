@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     const fetchProfileData = async () => {
 //       try {
-//         const response = await axios.get('http://127.0.0.1:5000/profile', {
+//         const response = await axios.get('http://127.0.0.1:5005/profile', {
 //           params: { email: currentuser.email, role: currentuser.role },
 //         });
 //         setProfileData(response.data.data);
@@ -139,7 +139,7 @@
 //   useEffect(() => {
 //     const fetchProfileData = async () => {
 //       try {
-//         const response = await axios.get('http://127.0.0.1:5000/profile', {
+//         const response = await axios.get('http://127.0.0.1:5005/profile', {
 //           params: { email: currentuser.email, role: currentuser.role },
 //         });
 //         setProfileData(response.data.data);
@@ -280,7 +280,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/profile', {
+        const response = await axios.get('http://127.0.0.1:5005/profile', {
           params: { email: currentuser.email, role: currentuser.role },
         });
         setProfileData(response.data.data);

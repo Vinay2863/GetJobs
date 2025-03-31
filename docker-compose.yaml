@@ -1,14 +1,49 @@
+# version: "3.8"
+
+# services:
+#   backend:
+#     build: ./backend
+#     ports:
+#       - "5005:5005"
+#     volumes:
+#       - ./backend:/app
+#     depends_on:
+#       - selenium
+#     environment:
+#       - FLASK_ENV=development
+#       - SELENIUM_REMOTE_URL=http://selenium:4444/wd/hub  # URL for Selenium container
+
+#   frontend:
+#     build: ./frontend
+#     ports:
+#       - "3000:3000"
+#     depends_on:
+#       - backend
+#     volumes:
+#       - ./frontend:/app
+#     environment:
+#       - NODE_ENV=development
+
+#   selenium:
+#     image: seleniarm/standalone-chromium  # ARM-compatible Selenium with Chromium
+#     ports:
+#       - "4444:4444"
+
+
 version: "3.8"
 
 services:
   backend:
     build: ./backend
     ports:
-      - "5000:5000"
+      - "5005:5005"
     volumes:
       - ./backend:/app
+    depends_on:
+      - selenium
     environment:
       - FLASK_ENV=development
+      - SELENIUM_REMOTE_URL=http://selenium:4444/wd/hub  # URL for Selenium container
 
   frontend:
     build: ./frontend
@@ -20,3 +55,10 @@ services:
       - ./frontend:/app
     environment:
       - NODE_ENV=development
+
+  selenium:
+    image: seleniarm/standalone-chromium  # ARM-compatible Selenium with Chromium
+    platform: linux/arm64  # Ensure it runs on ARM
+    ports:
+      - "4444:4444"
+    shm_size: 2g  # Prevent shared memory issues

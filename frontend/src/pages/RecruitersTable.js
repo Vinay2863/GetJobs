@@ -10,7 +10,7 @@ function RecruiterTable() {
 
   const fetchRecruiters = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/recruiters');
+      const response = await axios.get('http://127.0.0.1:5005/recruiters');
       setRecruiters(response.data);
       console.log(response.data);
     } catch (error) {
@@ -21,7 +21,7 @@ function RecruiterTable() {
   const handleAccept = async (id) => {
     try {
         console.log("HIiiiiiiiiii");
-      await axios.post(`http://127.0.0.1:5000/recruiters/${id}/accept`);
+      await axios.post(`http://127.0.0.1:5005/recruiters/${id}/accept`);
       fetchRecruiters(); // Refresh the list after accepting
     } catch (error) {
       console.error('Error accepting recruiter:', error);
@@ -30,7 +30,7 @@ function RecruiterTable() {
 
   const handleReject = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/recruiters/${id}`);
+      await axios.delete(`http://127.0.0.1:5005/recruiters/${id}`);
       fetchRecruiters(); // Refresh the list after deletion
     } catch (error) {
       console.error('Error rejecting recruiter:', error);

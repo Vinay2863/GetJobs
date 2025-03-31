@@ -17,7 +17,7 @@ const Jobs = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:5000/jobrec', {
+        const response = await axios.post('http://127.0.0.1:5005/jobrec', {
           params: { email: currentuser.email }
         });
         const data = typeof response.data === "string" ? JSON.parse(response.data) : response.data;
@@ -53,7 +53,7 @@ const Jobs = () => {
     }
 
     try {
-      const response = await axios.post(`http://127.0.0.1:5000/applyjob`, {
+      const response = await axios.post(`http://127.0.0.1:5005/applyjob`, {
         email,
         company: job.companyName,
         role: job.role
@@ -74,7 +74,7 @@ const Jobs = () => {
 
     setLoadingCompany(company);
     try {
-      const response = await axios.post("http://127.0.0.1:5000/get-jobs", {
+      const response = await axios.post("http://127.0.0.1:5005/get-jobs", {
         company,
         email
       });
@@ -187,7 +187,7 @@ export default Jobs;
 
 //   const stream_user = async () => {
 //     try {
-//       const response = await axios.post('http://127.0.0.1:5000/get_degree', {
+//       const response = await axios.post('http://127.0.0.1:5005/get_degree', {
 //         email: currentuser.email  // Remove `params` wrapper
 //       });
   
@@ -217,7 +217,7 @@ export default Jobs;
 //   useEffect(() => {
 //     const fetchProfiles = async () => {
 //       try {
-//         const response = await axios.post('http://127.0.0.1:5000/jobrec', {
+//         const response = await axios.post('http://127.0.0.1:5005/jobrec', {
 //           params: { email: currentuser.email }
 //         });
 //         const data = typeof response.data === "string" ? JSON.parse(response.data) : response.data;
@@ -253,7 +253,7 @@ export default Jobs;
 //     }
 
 //     try {
-//       const response = await axios.post(`http://127.0.0.1:5000/applyjob`, {
+//       const response = await axios.post(`http://127.0.0.1:5005/applyjob`, {
 //         email,
 //         company: job.companyName,
 //         role: job.role
@@ -273,7 +273,7 @@ export default Jobs;
     
 //     setLoadingCompany(company);
 //     try {
-//       const response = await axios.post("http://127.0.0.1:5000/get-jobs", {
+//       const response = await axios.post("http://127.0.0.1:5005/get-jobs", {
 //         company,
 //         email: currentuser?.email
 //       });
@@ -383,7 +383,7 @@ export default Jobs;
 //   useEffect(() => {
 //     const fetchStream = async () => {
 //       try {
-//         const response = await axios.post('http://127.0.0.1:5000/get_degree', {
+//         const response = await axios.post('http://127.0.0.1:5005/get_degree', {
 //           email: currentuser.email
 //         });
 
@@ -409,7 +409,7 @@ export default Jobs;
 //   useEffect(() => {
 //     const fetchProfiles = async () => {
 //       try {
-//         const response = await axios.post('http://127.0.0.1:5000/jobrec', {
+//         const response = await axios.post('http://127.0.0.1:5005/jobrec', {
 //           params: { email: currentuser.email }
 //         });
 //         const data = typeof response.data === "string" ? JSON.parse(response.data) : response.data;
@@ -445,7 +445,7 @@ export default Jobs;
 //     }
 
 //     try {
-//       const response = await axios.post(`http://127.0.0.1:5000/applyjob`, {
+//       const response = await axios.post(`http://127.0.0.1:5005/applyjob`, {
 //         email,
 //         company: job.companyName,
 //         role: job.role
@@ -465,7 +465,7 @@ export default Jobs;
     
 //     setLoadingCompany(company);
 //     try {
-//       const response = await axios.post("http://127.0.0.1:5000/get-jobs", {
+//       const response = await axios.post("http://127.0.0.1:5005/get-jobs", {
 //         company,
 //         email: currentuser?.email
 //       });

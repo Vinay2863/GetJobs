@@ -8,28 +8,26 @@ import json
 
 import time  
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service  
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
-# Set up Chrome options for headless mode (optional)
+# Set up Chrome options
 chrome_options = Options()
-chrome_options.add_argument("--headless")  # Run in headless mode (optional)
-chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--headless")  # Run in headless mode
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
-# Initialize WebDriver (Selenium Manager will handle ChromeDriver)
-driver = webdriver.Chrome(options=chrome_options)
+# Selenium Grid URL (inside Docker network)
+SELENIUM_REMOTE_URL = "http://selenium:4444/wd/hub"
 
-# Open a website (Example: Google)
-driver.get("https://www.google.com")
-
-# Wait for the search box to load (example of explicit wait)
-search_box = WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.NAME, "q"))
+# Initialize WebDriver with Remote Selenium
+driver = webdriver.Remote(
+    command_executor=SELENIUM_REMOTE_URL,
+    options=chrome_options
 )
+
+# Test: Open Google
+driver.get("https://www.google.com")
 
 # Print the page title
 print(driver.title)
@@ -878,4 +876,4 @@ def get_applied_jobs(email):
 
     
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, port=5005,debug=True)
