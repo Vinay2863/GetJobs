@@ -1,0 +1,7 @@
+Flask
+flask-cors
+flask-socketio
+pymongo
+google-generativeai
+selenium
+webdriver-manager 
