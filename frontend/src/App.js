@@ -9,9 +9,11 @@ import EditProfile from "./pages/EditProfile";
 import AppliedJobs from "./pages/AppliedJobs";
 import Connections from "./pages/Connections";
 import Jobs from "./pages/Jobs";
+import AllJobs from "./pages/AllJobs";
 import './App.css';
 import RecruiterTable from "./pages/RecruitersTable";
 import JobForm from "./pages/JobForm";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const action = useNavigationType();
@@ -103,6 +105,7 @@ function App() {
           <Route path="/recruiterslist" element={<RecruiterTable/>} />
           <Route path="/jobform" element={<JobForm />} />
           <Route path="/applyjob" element={<AppliedJobs />} />
+          <Route path="/alljobs" element={<AllJobs />} />
           
         </Routes>
         {/* <UserReports/> */}

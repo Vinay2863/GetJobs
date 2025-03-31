@@ -876,6 +876,53 @@ def get_applied_jobs(email):
         print("Error fetching applied jobs:", str(e))
         return jsonify({"message": "Server error"}), 500
 
+
+
+# @app.route('/allapplied_jobs', methods=['GET'])
+# def get_all_applied_jobs():
+#     try:
+#         jobs = appliedjobs_collection.find({}, {"_id": 1, "email": 1, "company": 1, "role": 1})  # Fetch all applied jobs
+#         all_jobs = []
+
+#         for job in jobs:
+#             all_jobs.append({
+#                 "_id": str(job["_id"]),
+#                 "email": job["email"],  # Keep email if needed
+#                 "company": job["company"],
+#                 "role": job["role"]
+#             })
+
+#         return jsonify(all_jobs), 200  # Returning a flat list of all jobs
+
+#     except Exception as e:
+#         print("Error fetching applied jobs:", str(e))
+#         return jsonify({"message": "Server error"}), 500
+
+@app.route('/alljobs', methods=['GET'])
+def get_all_applied_jobs():
+    
+    try:
+        jobs = appliedjobs_collection.find({}, {"_id": 1, "email": 1, "company": 1, "role": 1})
+        
+        # Convert ObjectId to string and format the response
+        all_jobs = [
+            {
+                "_id": str(job["_id"]),
+                "email": job["email"],
+                "company": job["company"],
+                "role": job["role"]
+            }
+            for job in jobs
+        ]
+      
+        return jsonify(all_jobs), 200
+
+    except Exception as e:
+        print("Error fetching applied jobs:", str(e))
+        return jsonify({"message": "Server error"}), 500
+
+
+
     
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app,port=5000, debug=True)

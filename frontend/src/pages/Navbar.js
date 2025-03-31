@@ -169,6 +169,7 @@ const Navbar = () => {
               {role === "admin" && (
                 <>
                   <Link to="/recruiterslist" className="navbar-link">Recruiters List</Link>
+                  <Link to="/alljobs" className="navbar-link">Applied Jobs</Link>
                 </>
               )}
 
