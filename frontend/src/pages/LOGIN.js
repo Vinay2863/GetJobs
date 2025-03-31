@@ -172,12 +172,17 @@ const LOGIN = () => {
       const response = await axios.post('http://127.0.0.1:5000/login', formData);
       console.log('Login Success:', response.data);
 
+      localStorage.setItem("LoggedInUser", JSON.stringify({ 
+        email: response.data.user.email, 
+        role: response.data.user.role 
+    }));
+    console.log(response.data.user);
+
       if (response.data.user.role=="user") 
         {
 
             //localStorage.setItem("LoggedInUser", JSON.stringify(response.data.user)); 
-            localStorage.setItem("LoggedInUser", JSON.stringify({ email: response.data.user.email }));
-            console.log(response.data.user);
+            
 
           navigate('/profile');
 

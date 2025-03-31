@@ -2,7 +2,7 @@
 FROM python:3.11.3
 
 # Set working directory inside the container
-WORKDIR /backend
+WORKDIR /app
 
 # Copy all backend files into the container
 COPY . .
