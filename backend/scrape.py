@@ -3,10 +3,24 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service  
 
-path = "C:/Users/preet/MajorProject/Project_Major/public/chromedriver.exe"
-service = Service(path)
-driver = webdriver.Chrome(service=service)
+# path = "C:/Users/preet/MajorProject/Project_Major/public/chromedriver.exe"
+# service = Service(path)
+# driver = webdriver.Chrome(service=service)
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
+# Set up Chrome options for headless mode (optional)
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Run in headless mode (optional)
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+
+# Initialize WebDriver (Selenium Manager will handle ChromeDriver)
+driver = webdriver.Chrome(options=chrome_options)
 def microsoft(skills):  
     driver.get('https://jobs.careers.microsoft.com/global/en/search')
     path_prefix = 'https://jobs.careers.microsoft.com/global/en/job/'
@@ -35,7 +49,7 @@ def microsoft(skills):
         
         except Exception as e:
             print(f"Error processing job: {e}")
-    driver.quit()
+    
 
     return jobs_list
 
@@ -77,10 +91,10 @@ def oracle(skills):
             jobs_list.append(f'<a href="{job_url}" target="_blank">{title}</a>')
         except Exception as e:
             print(f"Error processing job: {e}")
-    driver.quit()
+    
 
     return jobs_list
-
+driver.quit()
 # # Get job listings
 # jobs_listings = oracle("Python Developer")
 

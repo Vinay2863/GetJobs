@@ -632,7 +632,7 @@ def funnn():
             doc["_id"] = str(doc["_id"])
     # print(ans)
     # return jsonify(ans)
-    return jsonify(ans[:6])  # Returns only the first 6 jobs
+    return jsonify(ans[:10])  # Returns only the first 6 jobs
 
 def scrape_microsoft_jobs(skills):  
     try:
@@ -921,7 +921,28 @@ def get_all_applied_jobs():
         print("Error fetching applied jobs:", str(e))
         return jsonify({"message": "Server error"}), 500
 
+@app.route("/withdrawjob", methods=["DELETE"])
+def withdraw_job():
+    try:
+        data = request.json
+        email = data.get("email")
+        company = data.get("company")
+        role = data.get("role")
 
+        if not email or not company or not role:
+            return jsonify({"error": "Missing required fields"}), 400
+
+        result = appliedjobs_collection.delete_one(
+            {"email": email, "company": company, "role": role}
+        )
+
+        if result.deleted_count == 1:
+            return jsonify({"message": "Job withdrawn successfully"}), 200
+        else:
+            return jsonify({"error": "Job not found"}), 404
+
+    except Exception as e:
+        return jsonify({"error": "Internal Server Error", "message": str(e)}), 500
 
     
 if __name__ == '__main__':
